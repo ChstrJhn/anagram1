@@ -4,5 +4,6 @@
 file = File.open("db/words")
 
 file.each do |w|
-  Word.create! ( {anagram: w.strip} )
+  c = w.strip.downcase.chars.sort.join
+  Word.create! ( {anagram: w.strip, canonical: c} )
 end
